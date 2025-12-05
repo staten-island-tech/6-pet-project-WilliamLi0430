@@ -1,8 +1,11 @@
 class pest():  
 
     def __init__(self, name, happiness):
-        self.name == name 
-        self.__happiness == happiness 
+        self.name = name 
+        self.__happiness = happiness 
+
+    def show_status(self):
+        print(f"{self.name}'s happiness is now {self.__happiness}")
 
     def play(self):
         while True:
@@ -10,9 +13,11 @@ class pest():
             if  playtime == "play":
                 print(f"{self.name} is playing fetch!")
                 self.__happiness += 10
+                pest.show_status()
+            else:
+                break
 
-    def show_status(self):
-        print(f"{self.name}'s happiness is now {self.__happiness}")
-
-pest = ("brian")
+pestname = input("What is your pet's name?")
+pest = pest(pestname, 0)
 pest.play()
+pest.show_status()
