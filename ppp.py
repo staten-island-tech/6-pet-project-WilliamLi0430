@@ -5,19 +5,22 @@ class pest():
         self.__happiness = happiness 
 
     def show_status(self):
-        print(f"{self.name}'s happiness is now {self.__happiness}")
+        print(f"{self.name}'s happiness is now {self.__happiness}. ")
 
     def play(self):
         while True:
-            playtime = input("Write 'play' to play with your pet!")
+            playtime = input("Write 'play' to play with your pet! ")
             if  playtime == "play":
                 print(f"{self.name} is playing fetch!")
                 self.__happiness += 10
                 pest.show_status()
+                if self.__happiness == 100:
+                    print(f"{self.name} is at the maximum happiness level. ")
+                    break
             else:
-                break
+                print(f"{self.name}'s happiness is still {self.__happiness}. ")
 
-pestname = input("What is your pet's name?")
+pestname = input("What is your pet's name? ")
 pest = pest(pestname, 0)
 pest.play()
 pest.show_status()
