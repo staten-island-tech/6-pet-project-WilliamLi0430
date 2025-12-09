@@ -42,6 +42,8 @@ class pest():
                     time.sleep(2)
                     print("Take a look at its thin, raggedy body.")
                     time.sleep(2)
+                    print("Go ahead.")
+                    time.sleep(2)
                     print("Do you not feel even a bit of remorse?")
                     time.sleep(2)
                     print("Regret?")
