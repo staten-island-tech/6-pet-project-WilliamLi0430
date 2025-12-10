@@ -181,5 +181,5 @@ class pest():
                 print(f"{self.name}'s hunger level is still {self.hunger}. ")  
 
 pestname = input("What is your pet's name? ")
-pest = pest(pestname, 0, 50, 0)
+pest = pest(pestname, 50, 100, 0)
 pest.play()
