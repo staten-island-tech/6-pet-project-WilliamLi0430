@@ -2,24 +2,31 @@ import time
 
 class pest():  
 
-    def __init__(self, name, happiness, hunger):
+    def __init__(self, name, happiness, hunger, exhaustion):
         self.name = name 
         self.__happiness = happiness 
         self.hunger = hunger
+        self.exhaustion = exhaustion
 
     def show_status(self):
-        print(f"{self.name}'s happiness is now {self.__happiness}. ")
+        print(f"{self.name}'s happiness is now {self.__happiness}.")
 
     def show_status2(self):
-        print(f"{self.name}'s hunger level is now {self.hunger}. ")
+        print(f"{self.name}'s hunger level is now {self.hunger}.")
+
+    def show_status3(self):
+        print(f"{self.name}'s exhaustion level is now {self.exhaustion}.")
 
     def play(self):
         while True:
-            playtime = input("Write 'play' to play with your pet! ")
+            day_number = 1
+            playtime = input("play sleep feed ")
+
             if  playtime == "play":
                 print(f"{self.name} is playing fetch!")
                 self.__happiness += 10
                 self.hunger -= 10
+                self.exhaustion += 10
                 self.show_status()
                 self.show_status2()
                 if self.hunger <= 0:
@@ -91,7 +98,7 @@ class pest():
 
             elif playtime == "feed":
                 print(f"{self.name} is eating food!")
-                self.hunger += 10
+                self.hunger += 100
                 self.show_status2()
                 print(f"{self.name}'s happiness is still {self.__happiness}. ")
                 if self.hunger >= 100:
@@ -100,7 +107,7 @@ class pest():
                     time.sleep(3)
                     print(f"{self.name} has died.")
                     time.sleep(3)
-                    print(f"You fed {self.name} to much.")
+                    print(f"You fed {self.name} too much.")
                     time.sleep(3)
                     print("Do you know what you've done?")
                     time.sleep(3)
@@ -128,7 +135,7 @@ class pest():
                     time.sleep(3)
                     print(f"So you can overfeed {self.name}?")
                     time.sleep(3)
-                    print("So you can can on without trouble in your life?")
+                    print("So you can can go without trouble in your life?")
                     time.sleep(3)
                     print(f"If you can so willingly kill {self.name},")
                     time.sleep(3)
@@ -161,10 +168,18 @@ class pest():
                     print("Goodbye.")
                     break
 
+            elif playtime == "sleep":
+                print("The day is over.")
+                day_number += 1
+                self.exhaustion -= 20
+                self.hunger -= 5
+                self.happiness -= 10
+                print(f"It is now day {day_number}.")
+
             else:
                 print(f"{self.name}'s happiness is still {self.__happiness}. ")
                 print(f"{self.name}'s hunger level is still {self.hunger}. ")  
 
 pestname = input("What is your pet's name? ")
-pest = pest(pestname, 0, 50)
+pest = pest(pestname, 0, 50, 0)
 pest.play()
