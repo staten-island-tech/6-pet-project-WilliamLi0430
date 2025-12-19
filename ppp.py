@@ -28,7 +28,6 @@ class pest():
             self.level = 0
             playtime = input("play sleep feed ")
             playchance = [0, 1, 2, 3]
-#test this
             if  playtime == "play":
                 if random.choice(playchance) == 0:
                     print(f"{self.name} is playing fetch!")
