@@ -1,4 +1,5 @@
 import time
+import random
 
 class pest():  
 
@@ -18,20 +19,28 @@ class pest():
     def show_status3(self):
         print(f"{self.name}'s exhaustion level is now {self.exhaustion}.")
 
+    def show_status4(self):
+        print(f"{self.name} is now level {self.level}!")
+
     def play(self):
         while True:
             day_number = 1
+            self.level = 0
             playtime = input("play sleep feed ")
-
+            playchance = [0, 1, 2, 3]
+#test this
             if  playtime == "play":
-                print(f"{self.name} is playing fetch!")
-                self.__happiness += 10
-                self.hunger -= 100
-                self.exhaustion += 10
-                self.show_status()
-                self.show_status2()
-                if self.hunger <= 0:
-                    messages = [
+                if random.choice(playchance) == 0:
+                    print(f"{self.name} is playing fetch!")
+                    self.__happiness += 10
+                    self.hunger -= 10
+                    self.exhaustion += 10
+                    self.level += 10
+                    self.show_status()
+                    self.show_status2()
+                    self.show_status3()
+                    if self.hunger <= 0:
+                        messages = [
                         "...",
                         f"{self.name} has died.",
                         f"You did not feed {self.name} enough.",
@@ -65,12 +74,12 @@ class pest():
                         "I won't forget this.",
                         "Goodbye."
                     ]
-                    for line in messages:
-                        time.sleep(3)
-                        print(line)
-                    break
-                if self.exhaustion <= 0:
-                    messages = [
+                        for line in messages:
+                            time.sleep(3)
+                            print(line)
+                        break
+                    if self.exhaustion <= 0:
+                        messages = [
                         "...",
                         f"{self.name} has died.",
                         f"You did not allow {self.name} to rest enough.",
@@ -108,10 +117,12 @@ class pest():
                         time.sleep(3)
                         print(line)
                     break
+                if random.choice(playchance) == 1:
+                    print(f"{self.name} tug of war!")
 
             elif playtime == "feed":
                 print(f"{self.name} is eating food!")
-                self.hunger += 100
+                self.hunger += 10
                 self.show_status2()
                 print(f"{self.name}'s happiness is still {self.__happiness}. ")
                 if self.hunger >= 100:
@@ -162,6 +173,9 @@ class pest():
                 self.happiness -= 10
                 print(f"It is now day {day_number}.")
 
+            elif playtime == "level":
+                print(f"{self.name}'s level is {self.level}.")
+
             else:
                 print(f"{self.name}'s happiness is still {self.__happiness}. ")
                 print(f"{self.name}'s hunger level is still {self.hunger}. ")  
@@ -171,4 +185,4 @@ pestname = input("What is your pet's name? ")
 pest = pest(pestname, 50, 50, 0, 1)
 pest.play()
 
-#add evo, chests, levels, cookie gambling, limit amount of actions
+#add evo, chests, levels, cookie gambling, limit amount of actions per day
