@@ -3,12 +3,13 @@ import random
 
 class pest():  
 
-    def __init__(self, name, happiness, hunger, exhaustion, level):
+    def __init__(self, name, happiness, hunger, exhaustion, level, health):
         self.name = name 
         self.__happiness = happiness 
         self.hunger = hunger
         self.exhaustion = exhaustion
         self.level = level
+        self.health = health
 
     def show_status(self):
         print(f"{self.name}'s happiness is now {self.__happiness}.")
@@ -27,7 +28,7 @@ class pest():
             day_number = 1
             self.level = 0
             playtime = input("play sleep feed ")
-            playchance = [0, 1, 2, 3]
+            playchance = [0, 0, 1, 1, 2, 2, 3]
             if  playtime == "play":
                 if random.choice(playchance) == 0:
                     print(f"{self.name} is playing fetch!")
@@ -116,8 +117,12 @@ class pest():
                             time.sleep(3)
                             print(line)
                         break
-                if random.choice(playchance) == 1:
-                    print(f"{self.name} tug of war!")
+                elif random.choice(playchance) == 1:
+                    print(f"{self.name} is playing tug of war!")
+                elif random.choice(playchance) == 2:
+                    print(f"{self.name} is playing with Luke's code!")
+                elif random.choice(playchance) == 3:
+                    print(f"Oh no! {self.name} got hurt playing with you!")
 
             elif playtime == "feed":
                 print(f"{self.name} is eating food!")
@@ -181,7 +186,7 @@ class pest():
 
 pestname = input("What is your pet's name? ")
 #intro text here
-pest = pest(pestname, 50, 50, 0, 1)
+pest = pest(pestname, 50, 50, 0, 1, 100)
 pest.play()
 
 #add evo, chests, levels, cookie gambling, limit amount of actions per day
